@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { Game } from "@/draw/game";
 import { useWindowSize } from "@/hooks/useWindowSize";
-import { Color } from "react-color";
+import { Color } from "./ColorPicker";
 import ToolBar from "./ToolBar";
 import { useCursorType, useMouseStore } from "@/store/useMouseStore";
 import { useTheme } from "next-themes";
@@ -21,7 +21,7 @@ import { useRoomStore } from "@/store/useRoomStore";
 
 export type Tool = "rect" | "ellipse" | "line" | "pencil" | "pointer" | "panTool" | "text" | "diamond" | "arrow" | "eraser";
 
-export default function Canvas({ roomId, setRoomId, socket, loading, sessionId }: { roomId?: string, setRoomId: (Id: string | undefined) => void, socket: WebSocket | null, loading: boolean, sessionId: string | null }) {
+export default function Canvas({ roomId, setRoomId, socket, sessionId }: { roomId?: string, setRoomId: (Id: string | undefined) => void, socket: WebSocket | null, sessionId: string | null }) {
     const [selectedTool, setSelectedTool] = useState<Tool>('pointer');
     const [selectedColor, setSelectedColor] = useState<Color>({ hex: "#d3d3d3" });
     const windowSize = useWindowSize();
@@ -75,10 +75,10 @@ export default function Canvas({ roomId, setRoomId, socket, loading, sessionId }
             }
         }, 0)
     }
-    const handleCanvasDoubleClick = (e: MouseEvent) => {
+    const handleCanvasDoubleClick = (e: React.MouseEvent<HTMLCanvasElement>) => {
         if (selectedTool !== 'pointer') return;
         console.log("double click", e.clientX, " ", e.clientY)
-        game?.EditingText(e);
+        game?.EditingText(e.nativeEvent);
     }
 
     const handleCanvasClick = (e: React.MouseEvent) => {
@@ -201,7 +201,7 @@ export default function Canvas({ roomId, setRoomId, socket, loading, sessionId }
         if (game) {
             game.clearCanvas()
         }
-    }, [windowSize])
+    }, [windowSize, game])
 
     useEffect(() => {
         game?.setTool(selectedTool);
@@ -209,7 +209,7 @@ export default function Canvas({ roomId, setRoomId, socket, loading, sessionId }
 
     useEffect(() => {
         game?.setColor(selectedColor);
-    }, [selectedColor]);
+    }, [selectedColor, game]);
 
     useEffect(() => {
         if (game) {
@@ -245,7 +245,7 @@ export default function Canvas({ roomId, setRoomId, socket, loading, sessionId }
         }
 
 
-    }, [roomId, socket, sessionId, resolvedTheme, windowSize]);
+    }, [roomId, socket, sessionId, resolvedTheme, windowSize, game]);
 
     if (!windowSize.width || !windowSize.height) return null;
 
@@ -307,7 +307,7 @@ export default function Canvas({ roomId, setRoomId, socket, loading, sessionId }
                         textarea.style.height = `${textarea.scrollHeight}px`;
 
                         textarea.style.width = 'auto';
-                        const maxWidth = windowSize.width - textPosition.x - 20;
+                        const maxWidth = windowSize.width! - textPosition.x - 20;
                         const contentWidth = Math.min(textarea.scrollWidth + 2, maxWidth);
                         textarea.style.width = `${Math.max(50, contentWidth)}px`;
                     }}

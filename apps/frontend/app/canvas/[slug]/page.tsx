@@ -1,14 +1,15 @@
 
 import CanvasClient from "@/components/CanvasClient";
 import { BACKEND_URL } from "@/config";
+import Link from "next/link";
 
 
-export default async function ({
+export default async function CanvasPage({
     params,
 }: {
-    params: {
+    params: Promise<{
         slug: string;
-    };
+    }>;
 }) {
     const slug = (await params).slug;
 
@@ -22,8 +23,8 @@ export default async function ({
                 <div className="flex items-center justify-center h-screen">
                     <div className="text-center">
                         <h1 className="text-2xl font-bold mb-4">Room not found</h1>
-                        <p className="text-gray-600 mb-4">The room you're looking for doesn't exist.</p>
-                        <a href="/" className="text-blue-500 underline">Go back home</a>
+                        <p className="text-gray-600 mb-4">The room you&apos;re looking for doesn&apos;t exist.</p>
+                        <Link href="/" className="text-blue-500 underline">Go back home</Link>
                     </div>
                 </div>
             );
@@ -34,14 +35,14 @@ export default async function ({
                 <CanvasClient roomId={slug} />
             </div>
         );
-    } catch (error) {
+    } catch {
 
         return (
             <div className="flex items-center justify-center h-screen">
                 <div className="text-center">
                     <h1 className="text-2xl font-bold mb-4">Error loading room</h1>
                     <p className="text-gray-600 mb-4">Failed to load the room. Please try again.</p>
-                    <a href="/" className="text-blue-500 underline">Go back home</a>
+                    <Link href="/" className="text-blue-500 underline">Go back home</Link>
                 </div>
             </div>
         );

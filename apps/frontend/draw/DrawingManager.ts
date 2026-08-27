@@ -59,6 +59,7 @@ export class DrawingManager {
                     height: rectHeight,
                     color: selectedColor,
                     lineWidth: strokeWidth,
+                    version: 1, editedAt: Date.now(), isDeleted: false
                 };
                 break;
 
@@ -72,7 +73,8 @@ export class DrawingManager {
                     radiusX: Math.abs(width / 2),
                     radiusY: Math.abs(height / 2),
                     color: selectedColor,
-                    lineWidth: strokeWidth
+                    lineWidth: strokeWidth,
+                    version: 1, editedAt: Date.now(), isDeleted: false
                 };
                 break;
 
@@ -84,7 +86,8 @@ export class DrawingManager {
                     endX: canvasCoords.x,
                     endY: canvasCoords.y,
                     color: selectedColor,
-                    lineWidth: strokeWidth
+                    lineWidth: strokeWidth,
+                    version: 1, editedAt: Date.now(), isDeleted: false
                 };
                 break;
 
@@ -109,7 +112,8 @@ export class DrawingManager {
                     radiusX: Math.abs(diamondWidth / 2),
                     radiusY: Math.abs(diamondHeight / 2),
                     color: selectedColor,
-                    lineWidth: strokeWidth
+                    lineWidth: strokeWidth,
+                    version: 1, editedAt: Date.now(), isDeleted: false
                 };
                 break;
 
@@ -121,7 +125,8 @@ export class DrawingManager {
                     endX: canvasCoords.x,
                     endY: canvasCoords.y,
                     color: selectedColor,
-                    lineWidth: strokeWidth
+                    lineWidth: strokeWidth,
+                    version: 1, editedAt: Date.now(), isDeleted: false
                 };
                 break;
 

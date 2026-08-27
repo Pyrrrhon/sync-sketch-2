@@ -69,7 +69,7 @@ export class Arrow extends BaseShape {
 
     serialize() {
         return {
-            type: 'arrow',
+            type: 'arrow' as const,
             startX: this.startX,
             startY: this.startY,
             endX: this.endX,

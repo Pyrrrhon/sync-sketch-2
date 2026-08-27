@@ -1,6 +1,7 @@
 import { AvatarCircles } from "./AvatarCircle"
 import { useRoomStore } from "@/store/useRoomStore"
 import * as Popover from '@radix-ui/react-popover';
+import Image from "next/image";
 
 export const ActiveUsers = ({ sessionId }: { sessionId: string | null }) => {
 
@@ -55,9 +56,12 @@ export const ActiveUsers = ({ sessionId }: { sessionId: string | null }) => {
                                 key={user.sessionId}
                                 className="flex items-center gap-2.5 p-2 rounded-lg hover:bg-gray-100/80 dark:hover:bg-[#212020]/80 transition-all duration-150"
                             >
-                                <img
+                                <Image
                                     src={getBoringAvatarUrl(user.sessionId, 28)}
                                     alt={user.username}
+                                    width={28}
+                                    height={28}
+                                    unoptimized
                                     className="w-7 h-7 rounded-full ring-1 ring-gray-200 dark:ring-[#212020]"
                                 />
                                 <span className="text-sm font-medium text-gray-800 dark:text-gray-200 truncate">

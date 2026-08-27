@@ -6,9 +6,9 @@ import { useSocket } from "@/hooks/useSocket";
 
 export default function CanvasClient({ roomId: initialRoomId }: { roomId?: string }) {
     const [roomId, setRoomId] = useState<string | undefined>(initialRoomId);
-    const { loading, socket, sessionId } = useSocket(roomId);
+    const { socket, sessionId } = useSocket(roomId);
 
     return (
-        <Canvas roomId={roomId} socket={socket} loading={loading} setRoomId={setRoomId} sessionId={sessionId} />
+        <Canvas roomId={roomId} socket={socket} setRoomId={setRoomId} sessionId={sessionId} />
     )
 }

@@ -1,6 +1,5 @@
 import { useMouseStore } from "@/store/useMouseStore";
 import { MousePointer2 } from "lucide-react";
-const crypto = require('crypto');
 
 export default function MousePositionPointer() {
     const MousePositions = useMouseStore((state) => state.mousePositions)

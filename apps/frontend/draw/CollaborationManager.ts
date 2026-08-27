@@ -51,7 +51,7 @@ export class CollaborationManager {
     private username: string | null = null;
     private sceneInitialized: boolean = false;
 
-    constructor(socket?: WebSocket | null, roomId?: string | null,
+    constructor(socket: WebSocket | null | undefined, roomId: string | null | undefined,
         private onShapePreview: (shape: Shape, previewType: string) => void,
         private onMouseMove: (userId: string, x: number, y: number, username: string) => void,
         private getTransform: () => { scale: number; panX: number; panY: number },

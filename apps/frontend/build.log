@@ -1,0 +1,23 @@
+
+> frontend@0.1.0 build C:\Users\mayan\OneDrive\Desktop\ongoing_projects\test\sync-sketch-2\apps\frontend
+> next build
+
+   Γû▓ Next.js 15.3.3
+
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully in 2000ms
+   Linting and checking validity of types ...
+Failed to compile.
+
+./draw/CollaborationManager.ts:55:17
+Type error: A required parameter cannot follow an optional parameter.
+
+  53 |
+  54 |     constructor(socket?: WebSocket | null, roomId?: string | null,
+> 55 |         private onShapePreview: (shape: Shape, previewType: string) => void,
+     |                 ^
+  56 |         private onMouseMove: (userId: string, x: number, y: number, username: string) => void,
+  57 |         private getTransform: () => { scale: number; panX: number; panY: number },
+  58 |         private getExistingShapes: () => BaseShape[],
+Next.js build worker exited with code: 1 and signal: null
+ΓÇëELIFECYCLEΓÇë Command failed with exit code 1.

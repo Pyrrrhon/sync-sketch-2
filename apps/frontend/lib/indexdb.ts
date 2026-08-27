@@ -6,10 +6,10 @@ const dbVersion = 1;
 const storeName = 'shapes'
 
 export interface SketchDB {
-    shapes:{
-        id:string;
+    shapes: {
+        id: string;
         shape: Shape;
-        
+
     }
 }
 
@@ -27,7 +27,7 @@ export async function initDB(): Promise<IDBPDatabase<SketchDB>> {
     return db;
 }
 
-export async function saveShape(db:IDBPDatabase<SketchDB>, shape: Shape) {
+export async function saveShape(db: IDBPDatabase<SketchDB>, shape: Shape) {
     await db.put(storeName, shape)
 }
 
@@ -38,11 +38,13 @@ export async function getAllShapes(db: IDBPDatabase<SketchDB>) {
 
 }
 
-export async function deleteShape(db:IDBPDatabase<SketchDB>, shape: Shape) {
-    await db.delete(storeName, shape.id)
+export async function deleteShape(db: IDBPDatabase<SketchDB>, shape: Shape) {
+    if (shape.id) {
+        await db.delete(storeName, shape.id);
+    }
 }
 
-export async function clearAllShapes(db:IDBPDatabase<SketchDB>){
+export async function clearAllShapes(db: IDBPDatabase<SketchDB>) {
     await db.clear(storeName);
 
 }

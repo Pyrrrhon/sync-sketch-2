@@ -1,0 +1,31 @@
+draw/CollaborationManager.ts(55,17): error TS1016: A required parameter cannot follow an optional parameter.
+draw/DrawingManager.ts(54,17): error TS2322: Type '{ type: "rect"; x: number; y: number; width: number; height: number; color: string; lineWidth: number; }' is not assignable to type 'Shape | null'.
+  Type '{ type: "rect"; x: number; y: number; width: number; height: number; color: string; lineWidth: number; }' is missing the following properties from type 'Rect': version, editedAt, isDeleted
+draw/DrawingManager.ts(68,17): error TS2322: Type '{ type: "ellipse"; centerX: number; centerY: number; radiusX: number; radiusY: number; color: string; lineWidth: number; }' is not assignable to type 'Shape | null'.
+  Type '{ type: "ellipse"; centerX: number; centerY: number; radiusX: number; radiusY: number; color: string; lineWidth: number; }' is missing the following properties from type 'Ellipse': version, editedAt, isDeleted
+draw/DrawingManager.ts(80,17): error TS2322: Type '{ type: "line"; startX: number; startY: number; endX: number; endY: number; color: string; lineWidth: number; }' is not assignable to type 'Shape | null'.
+  Type '{ type: "line"; startX: number; startY: number; endX: number; endY: number; color: string; lineWidth: number; }' is missing the following properties from type 'Line': version, editedAt, isDeleted
+draw/DrawingManager.ts(105,17): error TS2322: Type '{ type: "diamond"; centerX: number; centerY: number; radiusX: number; radiusY: number; color: string; lineWidth: number; }' is not assignable to type 'Shape | null'.
+  Type '{ type: "diamond"; centerX: number; centerY: number; radiusX: number; radiusY: number; color: string; lineWidth: number; }' is missing the following properties from type 'Diamond': version, editedAt, isDeleted
+draw/DrawingManager.ts(117,17): error TS2322: Type '{ type: "arrow"; startX: number; startY: number; endX: number; endY: number; color: string; lineWidth: number; }' is not assignable to type 'Shape | null'.
+  Type '{ type: "arrow"; startX: number; startY: number; endX: number; endY: number; color: string; lineWidth: number; }' is missing the following properties from type 'Arrow': version, editedAt, isDeleted
+draw/DrawingManager.ts(206,17): error TS2322: Type 'Arrow' is not assignable to type 'BaseShape'.
+  The types returned by 'serialize()' are incompatible between these types.
+    Type '{ id: string; color: string; lineWidth: number; version: number; editedAt: number; isDeleted: boolean; type: string; startX: number; startY: number; endX: number; endY: number; }' is not assignable to type 'Shape'.
+      Type '{ id: string; color: string; lineWidth: number; version: number; editedAt: number; isDeleted: boolean; type: string; startX: number; startY: number; endX: number; endY: number; }' is not assignable to type 'Arrow'.
+        Types of property 'type' are incompatible.
+          Type 'string' is not assignable to type '"arrow"'.
+draw/shapes/Arrow.ts(70,5): error TS2416: Property 'serialize' in type 'Arrow' is not assignable to the same property in base type 'BaseShape'.
+  Type '() => { id: string; color: string; lineWidth: number; version: number; editedAt: number; isDeleted: boolean; type: string; startX: number; startY: number; endX: number; endY: number; }' is not assignable to type '() => Shape'.
+    Type '{ id: string; color: string; lineWidth: number; version: number; editedAt: number; isDeleted: boolean; type: string; startX: number; startY: number; endX: number; endY: number; }' is not assignable to type 'Shape'.
+      Type '{ id: string; color: string; lineWidth: number; version: number; editedAt: number; isDeleted: boolean; type: string; startX: number; startY: number; endX: number; endY: number; }' is not assignable to type 'Arrow'.
+        Types of property 'type' are incompatible.
+          Type 'string' is not assignable to type '"arrow"'.
+draw/utils/ShapeFactory.ts(33,17): error TS2322: Type 'Arrow' is not assignable to type 'BaseShape'.
+  The types returned by 'serialize()' are incompatible between these types.
+    Type '{ id: string; color: string; lineWidth: number; version: number; editedAt: number; isDeleted: boolean; type: string; startX: number; startY: number; endX: number; endY: number; }' is not assignable to type 'Shape'.
+      Type '{ id: string; color: string; lineWidth: number; version: number; editedAt: number; isDeleted: boolean; type: string; startX: number; startY: number; endX: number; endY: number; }' is not assignable to type 'Arrow'.
+        Types of property 'type' are incompatible.
+          Type 'string' is not assignable to type '"arrow"'.
+lib/indexdb.ts(42,32): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'IDBValidKey | IDBKeyRange'.
+  Type 'undefined' is not assignable to type 'IDBValidKey | IDBKeyRange'.
